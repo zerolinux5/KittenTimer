@@ -1,6 +1,7 @@
 package com.ZeroLinux5.kittentimer;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
@@ -13,6 +14,7 @@ public class MainActivity extends Activity {
 	private long counter;
 	private CountDownTimer timer;
 	private int countingDown = 0;
+	private MediaPlayer mediaPlayer;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		// Prevents the screen from dimming and going to sleep. 
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.a);
 	}
 
 	@Override
@@ -114,6 +117,7 @@ public class MainActivity extends Activity {
             public void onFinish() {
                 displayCount(0);
                 counter = 0;
+                mediaPlayer.start();
             }
         };
     timer.start();
