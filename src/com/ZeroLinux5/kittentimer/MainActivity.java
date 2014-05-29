@@ -97,7 +97,12 @@ public class MainActivity extends Activity {
 	}
 	
 	public void clickReset(View v) {
-		
+		counter = 0;
+		displayCount(counter);
+	    if (timer != null) {
+	        timer.cancel();
+	        countingDown = 0;
+	    }
 	}
 	
 	private void timerSet(){
